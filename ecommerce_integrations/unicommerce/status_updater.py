@@ -94,7 +94,7 @@ def _update_order_status_fields(orders):
 
 		if old_status != new_status:
 			so_code = order["name"]
-			frappe.db.set_value("Sales Order", so_code, ORDER_STATUS_FIELD, new_status, for_update=True)
+			frappe.db.set_value("Sales Order", so_code, ORDER_STATUS_FIELD, new_status)
 
 
 def ignore_pick_list_on_sales_order_cancel(doc, method=None):
@@ -153,6 +153,4 @@ def _update_package_status_fields(packages):
 
 		if old_status != new_status:
 			si_code = invoice["name"]
-			frappe.db.set_value(
-				"Sales Invoice", si_code, SHIPPING_PACKAGE_STATUS_FIELD, new_status, for_update=True
-			)
+			frappe.db.set_value("Sales Invoice", si_code, SHIPPING_PACKAGE_STATUS_FIELD, new_status)
