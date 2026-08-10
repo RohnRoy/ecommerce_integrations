@@ -52,6 +52,7 @@ def update_sales_order_status():
 		return
 
 	client = UnicommerceAPIClient()
+	frappe.set_user("Administrator")  # nosemgrep
 
 	days_to_sync = min(settings.get("order_status_days") or 2, 14)
 	minutes = days_to_sync * 24 * 60
@@ -111,6 +112,7 @@ def update_shipping_package_status():
 		return
 
 	client = UnicommerceAPIClient()
+	frappe.set_user("Administrator")  # nosemgrep
 
 	days_to_sync = min(settings.get("order_status_days") or 2, 14)
 	minutes = days_to_sync * 24 * 60
